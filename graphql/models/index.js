@@ -11,12 +11,28 @@ class User {
     return this.Model.create(signUpData);
   }
 
-  signIn() {
-    return 'Signing In...from ae-auth';
+  async signIn(signInData, ctx) {
+    try {
+      const user = await ctx.authenticate(signInData);
+      return user;
+    } catch (error) {
+      return error;
+    }
   }
 
-  signOut() {
-    return 'Signing Out...from ae-auth';
+  signOut(ctx) {
+    try {
+      console.log('BEFORE LOGOUT-------------');
+      console.log('is authenticated', ctx.isAuthenticated());
+      console.log('user', ctx.getUser());
+      ctx.logout();
+      console.log('AFTER LOGOUT-------------');
+      console.log('is authenticated', ctx.isAuthenticated());
+      console.log('user', ctx.getUser());
+      return true;
+    } catch  (e) {
+      return false;
+    }
   }
 }
 

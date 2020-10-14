@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server-express": "^2.18.2",
-    "mongoose": "^5.10.9"
+    "bcryptjs": "^2.4.3",
+    "mongoose": "^5.10.9",
+    "passport-strategy": "^1.0.0"
   }
 }
